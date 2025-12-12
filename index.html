@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathématiques Bac</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.263.1/umd/lucide.min.js"></script>
+    <script src="https://cdn.counter.dev/script.js" data-id="0dead722-e7f8-4f8a-b623-b3c8f8bd4967" data-utcoffset="1"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f172a 0%, #581c87 50%, #0f172a 100%);
+            min-height: 100vh;
+            padding: 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 2rem;
+            }
+        }
+
+        /* Animated background particles */
+        .particle {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-100px) translateX(50px); }
+            50% { transform: translateY(-200px) translateX(-50px); }
+            75% { transform: translateY(-100px) translateX(100px); }
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .header-icon {
+            width: 32px;
+            height: 32px;
+            color: #c084fc;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @media (min-width: 768px) {
+            .header-icon {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f7b731, #5f27cd);
+            background-size: 300% 300%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-shadow: none;
+        }
+
+        @media (min-width: 768px) {
+            h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        h1:hover {
+            transform: scale(1.1) rotate(2deg);
+            filter: drop-shadow(0 0 20px rgba(255, 107, 107, 0.6));
+        }
+
+        h1.bounce {
+            animation: bounceTitle 0.6s ease, gradientShift 3s ease infinite;
+        }
+
+        @keyframes bounceTitle {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-20px); }
+            50% { transform: translateY(-10px); }
+            75% { transform: translateY(-15px); }
+        }
+
+        .subtitle {
+            color: #4ecdc4;
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 0 1rem;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .subtitle {
+                font-size: 1.125rem;
+            }
+        }
+
+        .subtitle:hover {
+            color: #45b7d1;
+            transform: scale(1.05);
+            text-shadow: 0 0 15px rgba(78, 205, 196, 0.6);
+        }
+
+        .subtitle.wiggle {
+            animation: wiggle 0.5s ease;
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+            75% { transform: rotate(-3deg); }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding: 1.5rem;
+            color: #e9d5ff;
+            animation: fadeIn 1s ease-out 0.8s both;
+        }
+
+        @media (min-width: 768px) {
+            .footer {
+                margin-top: 4rem;
+                padding: 2rem;
+            }
+        }
+
+        .footer p {
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer p {
+                font-size: 1rem;
+            }
+        }
+
+        /* Social Media Icons in Footer */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            animation: fadeIn 1s ease-out 0.3s both;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        @media (min-width: 768px) {
+            .social-icon {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            filter: blur(10px);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .social-icon:hover::before {
+            opacity: 0.7;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-icon svg {
+            width: 24px;
+            height: 24px;
+            color: white;
+            z-index: 1;
+        }
+
+        @media (min-width: 768px) {
+            .social-icon svg {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        .whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+        }
+
+        .facebook {
+            background: linear-gradient(135deg, #1877F2, #0C63D4);
+        }
+
+        .instagram {
+            background: linear-gradient(135deg, #E4405F, #C13584, #833AB4);
+        }
+
+        .chapters-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 768px) {
+            .chapters-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .chapters-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .chapter-button {
+            position: relative;
+            overflow: hidden;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            text-decoration: none;
+            display: block;
+            animation: fadeInUp 0.6s ease-out both;
+            width: 100%;
+            text-align: center;
+        }
+
+        @media (min-width: 768px) {
+            .chapter-button {
+                padding: 2rem;
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .chapter-button:nth-child(1) { animation-delay: 0.1s; }
+        .chapter-button:nth-child(2) { animation-delay: 0.15s; }
+        .chapter-button:nth-child(3) { animation-delay: 0.2s; }
+        .chapter-button:nth-child(4) { animation-delay: 0.25s; }
+        .chapter-button:nth-child(5) { animation-delay: 0.3s; }
+        .chapter-button:nth-child(6) { animation-delay: 0.35s; }
+        .chapter-button:nth-child(7) { animation-delay: 0.4s; }
+        .chapter-button:nth-child(8) { animation-delay: 0.45s; }
+        .chapter-button:nth-child(9) { animation-delay: 0.5s; }
+        .chapter-button:nth-child(10) { animation-delay: 0.55s; }
+        .chapter-button:nth-child(11) { animation-delay: 0.6s; }
+        .chapter-button:nth-child(12) { animation-delay: 0.65s; }
+
+        .chapter-button:hover {
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        .chapter-button::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.2), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .chapter-button:hover::after {
+            opacity: 1;
+        }
+
+        .chapter-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.9;
+            transition: all 0.4s;
+            border-radius: 1.5rem;
+        }
+
+        .chapter-button:hover .chapter-bg {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .chapter-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .chapter-icon {
+            width: 48px;
+            height: 48px;
+            color: white;
+            margin: 0 auto 0.75rem;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s;
+        }
+
+        @media (min-width: 768px) {
+            .chapter-icon {
+                width: 64px;
+                height: 64px;
+                margin: 0 auto 1rem;
+            }
+        }
+
+        .chapter-button:hover .chapter-icon {
+            transform: rotateY(360deg);
+        }
+
+        .chapter-name {
+            font-size: 1rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .chapter-name {
+                font-size: 1.25rem;
+            }
+        }
+
+        /* Gradient colors */
+        .bg-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .bg-purple { background: linear-gradient(135deg, #a855f7, #9333ea); }
+        .bg-green { background: linear-gradient(135deg, #22c55e, #16a34a); }
+        .bg-orange { background: linear-gradient(135deg, #f97316, #ea580c); }
+        .bg-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .bg-indigo { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+        .bg-pink { background: linear-gradient(135deg, #ec4899, #db2777); }
+        .bg-teal { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+        .bg-cyan { background: linear-gradient(135deg, #06b6d4, #0891b2); }
+        .bg-amber { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .bg-rose { background: linear-gradient(135deg, #f43f5e, #e11d48); }
+        .bg-lime { background: linear-gradient(135deg, #84cc16, #65a30d); }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated particles -->
+    <div class="particle" style="width: 60px; height: 60px; top: 10%; left: 10%; animation-delay: 0s;"></div>
+    <div class="particle" style="width: 40px; height: 40px; top: 20%; left: 80%; animation-delay: 2s;"></div>
+    <div class="particle" style="width: 80px; height: 80px; top: 60%; left: 15%; animation-delay: 4s;"></div>
+    <div class="particle" style="width: 50px; height: 50px; top: 80%; left: 85%; animation-delay: 6s;"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-content">
+                <i data-lucide="book-open" class="header-icon"></i>
+                <h1 id="mainTitle">Bac Math</h1>
+            </div>
+            <p class="subtitle" id="subTitle">Sélectionnez un chapitre pour commencer vos révisions</p>
+        </div>
+
+        <!-- Chapters Grid -->
+        <div class="chapters-grid">
+            <!-- Limites -->
+            <button class="chapter-button" onclick="window.location.href='limites.html'">
+                <div class="chapter-bg bg-blue"></div>
+                <div class="chapter-content">
+                    <i data-lucide="activity" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Limites</h3>
+                </div>
+            </button>
+            
+            <!-- Continuité -->
+            <button class="chapter-button" onclick="window.location.href='continuite.html'">
+                <div class="chapter-bg bg-lime"></div>
+                <div class="chapter-content">
+                    <i data-lucide="layers" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Continuité</h3>
+                </div>
+            </button>
+            
+            <!-- Dérivation -->
+            <button class="chapter-button" onclick="window.location.href='derivation.html'">
+                <div class="chapter-bg bg-purple"></div>
+                <div class="chapter-content">
+                    <i data-lucide="trending-up" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Dérivation</h3>
+                </div>
+            </button>
+
+            <!-- Fonctions -->
+            <button class="chapter-button" onclick="window.location.href='fonctions.html'">
+                <div class="chapter-bg bg-green"></div>
+                <div class="chapter-content">
+                    <i data-lucide="infinity" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Fonctions</h3>
+                </div>
+            </button>
+
+            <!-- Suites -->
+            <button class="chapter-button" onclick="window.location.href='suites.html'">
+                <div class="chapter-bg bg-orange"></div>
+                <div class="chapter-content">
+                    <i data-lucide="bar-chart-3" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Suites</h3>
+                </div>
+            </button>
+
+            <!-- Logarithme -->
+            <button class="chapter-button" onclick="window.location.href='logarithme.html'">
+                <div class="chapter-bg bg-red"></div>
+                <div class="chapter-content">
+                    <i data-lucide="layers" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Logarithme</h3>
+                </div>
+            </button>
+
+            <!-- Nombres Complexes -->
+            <button class="chapter-button" onclick="window.location.href='nombres_complexes.html'">
+                <div class="chapter-bg bg-indigo"></div>
+                <div class="chapter-content">
+                    <i data-lucide="calculator" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Nombres Complexes</h3>
+                </div>
+            </button>
+
+            <!-- Exponentielle -->
+            <button class="chapter-button" onclick="window.location.href='exponentielle.html'">
+                <div class="chapter-bg bg-pink"></div>
+                <div class="chapter-content">
+                    <i data-lucide="trending-up" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Exponentielle</h3>
+                </div>
+            </button>
+
+            <!-- Intégrales -->
+            <button class="chapter-button" onclick="window.location.href='integrales.html'">
+                <div class="chapter-bg bg-teal"></div>
+                <div class="chapter-content">
+                    <i data-lucide="git-branch" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Intégrales</h3>
+                </div>
+            </button>
+
+            <!-- Équation Différentielle -->
+            <button class="chapter-button" onclick="window.location.href='equation_differentielle.html'">
+                <div class="chapter-bg bg-cyan"></div>
+                <div class="chapter-content">
+                    <i data-lucide="activity" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Équation Différentielle</h3>
+                </div>
+            </button>
+
+            <!-- Géométrie -->
+            <button class="chapter-button" onclick="window.location.href='geometrie.html'">
+                <div class="chapter-bg bg-amber"></div>
+                <div class="chapter-content">
+                    <i data-lucide="calculator" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Géométrie</h3>
+                </div>
+            </button>
+
+            <!-- Probabilités -->
+            <button class="chapter-button" onclick="window.location.href='probabilites.html'">
+                <div class="chapter-bg bg-rose"></div>
+                <div class="chapter-content">
+                    <i data-lucide="git-branch" class="chapter-icon"></i>
+                    <h3 class="chapter-name">Probabilités</h3>
+                </div>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="subtitle" id="subTitle">✨ Bonne révision et bonne chance pour le Bac ! ✨</p>
+            
+            <!-- Social Media Icons -->
+            <div class="social-media">
+                <a href="https://wa.me/+212620940355" target="_blank" class="social-icon whatsapp" title="WhatsApp">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                    </svg>
+                </a>
+                <a href="https://facebook.com/YOUR_PAGE" target="_blank" class="social-icon facebook" title="Facebook">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                    </svg>
+                </a>
+                <a href="https://instagram.com/zikoorh" target="_blank" class="social-icon instagram" title="Instagram">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Animation interactive pour "Math Bac"
+        const mainTitle = document.getElementById('mainTitle');
+        const subTitle = document.getElementById('subTitle');
+
+        // Animation bounce au clic pour le titre
+        mainTitle.addEventListener('click', function() {
+            this.classList.add('bounce');
+            setTimeout(() => {
+                this.classList.remove('bounce');
+            }, 600);
+        });
+
+        // Animation wiggle au clic pour le sous-titre
+        subTitle.addEventListener('click', function() {
+            this.classList.add('wiggle');
+            setTimeout(() => {
+                this.classList.remove('wiggle');
+            }, 500);
+        });
+
+        // Animation automatique du texte (effet wave)
+        function animateTitle() {
+            const text = mainTitle.textContent;
+            mainTitle.innerHTML = '';
+            
+            text.split('').forEach((char, index) => {
+                const span = document.createElement('span');
+                span.textContent = char;
+                span.style.display = 'inline-block';
+                span.style.animation = `wave 1s ease-in-out ${index * 0.1}s infinite`;
+                mainTitle.appendChild(span);
+            });
+        }
+
+        // Ajouter l'animation wave au CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes wave {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-10px); }
+            }
+            #mainTitle span {
+                background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f7b731, #5f27cd);
+                background-size: 300% 300%;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                animation: gradientShift 3s ease infinite, wave 1s ease-in-out infinite;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Lancer l'animation après 1 seconde
+        setTimeout(animateTitle, 1000);
+    </script>
+
+
+</body>
+</html>
