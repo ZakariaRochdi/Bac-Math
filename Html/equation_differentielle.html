@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiche de Synthèse - Équations Différentielles</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.min.js"></script>
+    <!-- Ajout de Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            position: relative;
+        }
+        
+        body::before {
+            content: "Pr.ZAKARIA ROCHDI";
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(45deg);
+            font-size: 80px;
+            color: rgba(52, 152, 219, 0.08);
+            font-weight: bold;
+            z-index: 0;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            box-shadow: 0 5px 20px rgba(41, 128, 185, 0.3);
+        }
+        
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+            color: #193549;
+        }
+        
+        .header h2 {
+            font-size: 28px;
+            color: #800080;
+        }
+        
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 2px solid #2980b9;
+            margin-bottom: 30px;
+            color: #2980b9;
+            font-weight: bold;
+        }
+        
+        .footer-bar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-top: 2px solid #2980b9;
+            margin-top: 30px;
+            color: #193549;
+            font-size: 14px;
+            align-items: center;
+        }
+        
+        .whatsapp-contact {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: inherit;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-contact:hover {
+            color: #25D366;
+            transform: translateY(-2px);
+        }
+        
+        .whatsapp-contact i {
+            transition: all 0.3s ease;
+        }
+        
+        .whatsapp-contact:hover i {
+            transform: scale(1.1);
+        }
+        
+        .section-title {
+            color: #2980b9;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 30px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2980b9;
+        }
+        
+        .subsection-title {
+            color: #3498db;
+            font-size: 20px;
+            font-weight: bold;
+            margin: 20px 0 10px 0;
+        }
+        
+        .box {
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        
+        .definition-box {
+            background: rgba(41, 128, 185, 0.05);
+            border-color: #2980b9;
+        }
+        
+        .theorem-box {
+            background: rgba(231, 76, 60, 0.05);
+            border-color: #e74c3c;
+        }
+        
+        .property-box {
+            background: rgba(52, 152, 219, 0.05);
+            border-color: #3498db;
+        }
+        
+        .example-box {
+            background: rgba(46, 204, 113, 0.05);
+            border-color: #2ecc71;
+        }
+        
+        .box-title {
+            font-weight: bold;
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        .definition-box .box-title {
+            color: #2980b9;
+        }
+        
+        .theorem-box .box-title {
+            color: #e74c3c;
+        }
+        
+        .property-box .box-title {
+            color: #3498db;
+        }
+        
+        .example-box .box-title {
+            color: #2ecc71;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        table th {
+            background: #2980b9;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        
+        table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .caption {
+            text-align: center;
+            font-style: italic;
+            color: #000;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        
+        ul {
+            margin: 10px 0 10px 30px;
+        }
+        
+        li {
+            margin: 8px 0;
+            line-height: 1.6;
+        }
+        
+        .highlight-primary {
+            color: #2980b9;
+            font-weight: bold;
+        }
+        
+        .highlight-accent {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        .highlight-secondary {
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .highlight-orange {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        
+        .highlight-green {
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .highlight-red {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        
+        ol {
+            margin: 10px 0 10px 30px;
+        }
+        
+        .math-block {
+            text-align: center;
+            margin: 15px 0;
+            padding: 10px;
+        }
+        
+       @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            body::before {
+                font-size: 40px;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+            
+            .header {
+                padding: 20px 15px;
+            }
+            
+            .header h1 {
+                font-size: 24px;
+            }
+            
+            .header h2 {
+                font-size: 20px;
+            }
+            
+            .top-bar {
+                flex-direction: column;
+                gap: 5px;
+                text-align: center;
+                font-size: 14px;
+            }
+            
+            .footer-bar {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            
+            .section-title {
+                font-size: 20px;
+            }
+            
+            .subsection-title {
+                font-size: 18px;
+            }
+            
+            .box {
+                padding: 15px;
+                margin: 15px 0;
+            }
+            
+            .box-title {
+                font-size: 16px;
+            }
+            
+            table {
+                font-size: 14px;
+                display: block;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            table th,
+            table td {
+                padding: 8px;
+                min-width: 120px;
+            }
+            
+            .math-block {
+                font-size: 14px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+            
+            ul, ol {
+                margin-left: 20px;
+            }
+            
+            li {
+                font-size: 14px;
+            }
+            
+            .caption {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <span>📚 Équations Différentielles</span>
+            <span>🎓 2025/2026</span>
+        </div>
+        
+        <div class="header">
+            <h1>Fiche de Synthèse</h1>
+            <h2>Équations Différentielles</h2>
+        </div>
+        
+        <h2 class="section-title">1. Définitions Fondamentales</h2>
+        
+        <div class="box definition-box">
+            <span class="box-title">Définition</span>
+            <p>Une <strong>équation différentielle</strong> est une équation faisant intervenir une fonction inconnue \(y\), sa dérivée \(y'\) et éventuellement ses dérivées d'ordre supérieur.</p>
+            <ul>
+                <li><strong>Solution particulière</strong> : Toute fonction \(g\) dérivable qui vérifie l'équation différentielle.</li>
+                <li><strong>Solution générale</strong> : Ensemble de toutes les fonctions qui vérifient l'équation différentielle.</li>
+            </ul>
+        </div>
+        
+        <h2 class="section-title">2. Équations du Premier Ordre : \(y' = ay + b\)</h2>
+        
+        <div class="box definition-box">
+            <span class="box-title">Définition</span>
+            <p>Équation différentielle linéaire du <strong>premier ordre</strong> à coefficients constants :</p>
+            <div class="math-block">
+                \[\color{#2980b9}{(E) : y' = ay + b} \quad \text{où } a, b \in \mathbb{R}\]
+            </div>
+        </div>
+        
+        <h3 class="subsection-title">2.1 Solutions Générales</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Cas</th>
+                    <th>Condition</th>
+                    <th>Solution Générale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight-primary">Cas Général</td>
+                    <td><span class="highlight-green">\(a \neq 0\)</span></td>
+                    <td><span class="highlight-accent">\(f(x) = \lambda e^{ax} - \dfrac{b}{a}\)</span>, où \(\lambda \in \mathbb{R}\)</td>
+                </tr>
+                <tr>
+                    <td class="highlight-primary">Cas Particulier 1</td>
+                    <td><span class="highlight-green">\(a = 0\) et \(b \neq 0\)</span></td>
+                    <td><span class="highlight-accent">\(f(x) = bx + \lambda\)</span>, où \(\lambda \in \mathbb{R}\)</td>
+                </tr>
+                <tr>
+                    <td class="highlight-primary">Cas Particulier 2</td>
+                    <td><span class="highlight-green">\(a = 0\) et \(b = 0\)</span></td>
+                    <td><span class="highlight-accent">\(f(x) = \lambda\)</span>, où \(\lambda \in \mathbb{R}\)</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tableau 1: Solutions de l'équation \(y' = ay + b\).</p>
+        
+        <div class="box example-box">
+            <span class="box-title">Exemples</span>
+            <ol>
+                <li><strong>\(y' = 4y + 5\)</strong> : 
+                    <div class="math-block">
+                        \[\color{#27ae60}{f(x) = \lambda e^{4x} - \dfrac{5}{4}}\]
+                    </div>
+                </li>
+                <li><strong>\(y' = 3y\)</strong> (car \(b = 0\)) :
+                    <div class="math-block">
+                        \[\color{#27ae60}{f(x) = \lambda e^{3x}}\]
+                    </div>
+                </li>
+                <li><strong>\(y' = 7\)</strong> (car \(a = 0\)) :
+                    <div class="math-block">
+                        \[\color{#27ae60}{f(x) = 7x + \lambda}\]
+                    </div>
+                </li>
+            </ol>
+        </div>
+        
+        <h3 class="subsection-title">2.2 Condition Initiale</h3>
+        
+        <div class="box theorem-box">
+            <span class="box-title">Théorème</span>
+            <p>Pour l'équation \((E) : y' = ay + b\) avec \(a \neq 0\), il existe <strong>une et une seule</strong> fonction solution vérifiant la condition initiale :</p>
+            <div class="math-block">
+                \[\color{#e74c3c}{f(x_0) = y_0} \quad \text{où } x_0, y_0 \in \mathbb{R}\]
+            </div>
+        </div>
+        
+        <div class="box example-box">
+            <span class="box-title">Exemple</span>
+            <p>Déterminer la solution de \(y' = 4y + 5\) vérifiant \(f(-7) = 11\).</p>
+            <p><strong>Solution :</strong></p>
+            <ul>
+                <li>Solution générale : \(f(x) = \lambda e^{4x} - \dfrac{5}{4}\)</li>
+                <li>Condition : \(f(-7) = 11 \implies \lambda e^{-28} - \dfrac{5}{4} = 11\)</li>
+                <li>D'où : \(\lambda = \dfrac{49}{4}e^{28}\)</li>
+            </ul>
+            <div class="math-block">
+                \[\color{#27ae60}{f(x) = \dfrac{49}{4}e^{4x+28} - \dfrac{5}{4}}\]
+            </div>
+        </div>
+        
+        <h2 class="section-title">3. Équations du Second Ordre : \(ay'' + by' + cy = 0\)</h2>
+        
+        <div class="box definition-box">
+            <span class="box-title">Définition</span>
+            <p>Équation différentielle linéaire du <strong>second ordre</strong> à coefficients constants sans second membre :</p>
+            <div class="math-block">
+                \[\color{#2980b9}{(E) : ay'' + by' + cy = 0} \quad \text{où } a, b, c \in \mathbb{R}\]
+            </div>
+            <p><strong>Équation caractéristique</strong> associée :</p>
+            <div class="math-block">
+                \[\color{#f39c12}{(r) : ar^2 + br + c = 0}\]
+            </div>
+            <p><strong>Discriminant</strong> : \(\Delta = b^2 - 4ac\)</p>
+        </div>
+        
+        <h3 class="subsection-title">3.1 Solutions selon le discriminant</h3>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Cas</th>
+                    <th>Condition</th>
+                    <th>Racines</th>
+                    <th>Solution Générale</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="highlight-primary">Cas 1</td>
+                    <td><span class="highlight-green">\(\Delta > 0\)</span></td>
+                    <td>Deux racines réelles distinctes : \(r_1, r_2\)</td>
+                    <td><span class="highlight-accent">\(y(x) = \alpha e^{r_1 x} + \beta e^{r_2 x}\)</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight-primary">Cas 2</td>
+                    <td><span class="highlight-green">\(\Delta = 0\)</span></td>
+                    <td>Une racine réelle double : \(r\)</td>
+                    <td><span class="highlight-accent">\(y(x) = (\alpha x + \beta)e^{r x}\)</span></td>
+                </tr>
+                <tr>
+                    <td class="highlight-primary">Cas 3</td>
+                    <td><span class="highlight-green">\(\Delta < 0\)</span></td>
+                    <td>Deux racines complexes : \(r = p \pm iq\)</td>
+                    <td><span class="highlight-accent">\(y(x) = e^{px}(\alpha \cos(qx) + \beta \sin(qx))\)</span></td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="caption">Tableau 2: Solutions selon le signe du discriminant (\(\alpha, \beta \in \mathbb{R}\)).</p>
+        
+        <h3 class="subsection-title">3.2 Exemples Détaillés</h3>
+        
+        <div class="box example-box">
+            <span class="box-title">Exemple 1 : \(\Delta > 0\)</span>
+            <p>Résoudre \(y'' - 5y' + 6y = 0\)</p>
+            <ul>
+                <li>Équation caractéristique : \(r^2 - 5r + 6 = 0\)</li>
+                <li>Discriminant : \(\Delta = 25 - 24 = 1 > 0\)</li>
+                <li>Racines : \(r_1 = 2\) et \(r_2 = 3\)</li>
+            </ul>
+            <div class="math-block">
+                \[\color{#27ae60}{y(x) = \alpha e^{2x} + \beta e^{3x}}\]
+            </div>
+        </div>
+        
+        <div class="box example-box">
+            <span class="box-title">Exemple 2 : \(\Delta = 0\)</span>
+            <p>Résoudre \(y'' - 4y' + 4y = 0\)</p>
+            <ul>
+                <li>Équation caractéristique : \(r^2 - 4r + 4 = 0\) soit \((r - 2)^2 = 0\)</li>
+                <li>Discriminant : \(\Delta = 16 - 16 = 0\)</li>
+                <li>Racine double : \(r = 2\)</li>
+            </ul>
+            <div class="math-block">
+                \[\color{#27ae60}{y(x) = (\alpha x + \beta)e^{2x}}\]
+            </div>
+        </div>
+        
+        <div class="box example-box">
+            <span class="box-title">Exemple 3 : \(\Delta < 0\)</span>
+            <p>Résoudre \(y'' + y' + y = 0\)</p>
+            <ul>
+                <li>Équation caractéristique : \(r^2 + r + 1 = 0\)</li>
+                <li>Discriminant : \(\Delta = 1 - 4 = -3 < 0\)</li>
+                <li>Racines complexes : \(r = -\dfrac{1}{2} \pm i\dfrac{\sqrt{3}}{2}\)</li>
+                <li>Donc : \(p = -\dfrac{1}{2}\) et \(q = \dfrac{\sqrt{3}}{2}\)</li>
+            </ul>
+            <div class="math-block">
+                \[\color{#27ae60}{y(x) = e^{-\frac{x}{2}}\left(\alpha \cos\left(\dfrac{\sqrt{3}}{2}x\right) + \beta \sin\left(\dfrac{\sqrt{3}}{2}x\right)\right)}\]
+            </div>
+        </div>
+        
+        <h2 class="section-title">4. Récapitulatif des Méthodes</h2>
+        
+        <div class="box property-box">
+            <span class="box-title">Méthode de Résolution</span>
+            <p><strong>Pour \(y' = ay + b\) :</strong></p>
+            <ol>
+                <li>Identifier les coefficients \(a\) et \(b\)</li>
+                <li>Appliquer la formule selon le cas (voir Tableau 1)</li>
+                <li>Si condition initiale : remplacer et résoudre pour \(\lambda\)</li>
+            </ol>
+            
+            <p><strong>Pour \(ay'' + by' + cy = 0\) :</strong></p>
+            <ol>
+                <li>Écrire l'équation caractéristique : \(ar^2 + br + c = 0\)</li>
+                <li>Calculer le discriminant : \(\Delta = b^2 - 4ac\)</li>
+                <li>Déterminer les racines selon le signe de \(\Delta\)</li>
+                <li>Écrire la solution générale selon le cas (voir Tableau 2)</li>
+            </ol>
+        </div>
+        
+        <div class="footer-bar">
+            <span style="color:#000000; font-weight:bold;">Prof. ZAKARIA ROCHDI</span>
+            <!-- Section WhatsApp avec icône et numéro cliquable -->
+            <a href="https://wa.me/+212620940355" class="whatsapp-contact" target="_blank" rel="noopener noreferrer">
+                <i class="fab fa-whatsapp" style="color: #25D366; font-size: 18px;"></i>
+                <span>06 20 94 03 55</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>
+
