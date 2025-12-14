@@ -637,57 +637,58 @@
         
         <h3 class="subsection-title">6.2 Règles de Calcul de Limites</h3>
         
-        <div class="box property-box">
-            <span class="box-title">✓ Règles Fondamentales</span>
-            <div class="formula-grid">
-                <div class="formula-card">
-                    <strong>① \((-\infty)^n\)</strong>
-                    <div class="math-block">
-                        \[\text{Si } n \text{ pair: } +\infty\]
-                        \[\text{Si } n \text{ impair: } -\infty\]
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>② \((+\infty)^n = +\infty\)</strong>
-                    <div class="math-block">
-                        \[\forall n \in \mathbb{N}\]
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>③ \(a \times (+\infty)\)</strong>
-                    <div class="math-block">
-                        \[\text{Si } a > 0: +\infty\]
-                        \[\text{Si } a < 0: -\infty\]
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>④ \(a \times (-\infty)\)</strong>
-                    <div class="math-block">
-                        \[\text{Si } a > 0: -\infty\]
-                        \[\text{Si } a < 0: +\infty\]
-                    </div>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>⑤ \(+\infty \pm a = +\infty\)</strong>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>⑥ \(-\infty \pm a = -\infty\)</strong>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>⑦ \(\dfrac{a}{\infty} = 0\)</strong>
-                </div>
-                
-                <div class="formula-card">
-                    <strong>⑧ \(\dfrac{a \neq 0}{0} = \infty\)</strong>
-                </div>
+       <div class="box property-box">
+    <span class="box-title">✓ Règles Fondamentales</span>
+    <div class="formula-grid">
+        <div class="formula-card">
+            <strong>① \((-\infty)^n\)</strong>
+            <div class="math-block">
+                \[\text{Si } n \text{ pair: } \color{red}{+\infty}\]
+                \[\text{Si } n \text{ impair: } \color{red}{-\infty}\]
             </div>
         </div>
+        
+        <div class="formula-card">
+            <strong>② \((+\infty)^n = \color{red}{+\infty}\)</strong>
+            <div class="math-block">
+                \[\forall n \in \mathbb{N}\]
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <strong>③ \(a \times (+\infty)\)</strong>
+            <div class="math-block">
+                \[\text{Si } a > 0: \color{red}{+\infty}\]
+                \[\text{Si } a < 0: \color{red}{-\infty}\]
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <strong>④ \(a \times (-\infty)\)</strong>
+            <div class="math-block">
+                \[\text{Si } a > 0: \color{red}{-\infty}\]
+                \[\text{Si } a < 0: \color{red}{+\infty}\]
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <strong>⑤ \(+\infty \pm a = \color{red}{+\infty}\)</strong>
+        </div>
+        
+        <div class="formula-card">
+            <strong>⑥ \(-\infty \pm a = \color{red}{-\infty}\)</strong>
+        </div>
+        
+        <div class="formula-card">
+            <strong>⑦ \(\dfrac{a}{\infty} = \color{red}{0}\)</strong>
+        </div>
+        
+        <div class="formula-card">
+            <strong>⑧ \(\dfrac{a \neq 0}{0} = \color{red}{\infty}\)</strong>
+        </div>
+    </div>
+</div>
+
         
             <div class="box important-note">
     <strong>📌 Règles Spéciales :</strong>
@@ -784,8 +785,8 @@
     <span class="box-title">💡 Calcul de \( \lim_{x \to \pm\infty} \left(\sqrt{a x^2 + b x + c} + m x + \beta\right) \)</span>
     <p><strong>Si la limite donne \(+\infty - \infty\) :</strong></p>
     <ul>
-        <li>Si <span class="highlight-green">\(a \neq \sqrt{m}\)</span> : utiliser la <span class="red">factorisation</span></li>
-        <li>Si <span class="highlight-green">\(a = \sqrt{m}\)</span> : multiplier par le <span class="red">conjugué</span></li>
+        <li>Si <span class="highlight-green">\(\sqrt{a} \neq |m|\)</span> : utiliser la <span class="red">factorisation</span></li>
+        <li>Si <span class="highlight-green">\(\sqrt{a} = |m|\)</span> : multiplier par le <span class="red">conjugué</span></li>
     </ul>
 </div>
         
@@ -909,6 +910,7 @@
     </div>
 </body>
 </html>
+
 
 
 
