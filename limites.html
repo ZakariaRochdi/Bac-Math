@@ -718,7 +718,7 @@
         
         <div class="box definition-box">
             <span class="box-title">📘 Propriétés</span>
-           <p>Soit \(\color{#2ecc71}{P(x)}\) un polynôme, \(\color{#2ecc71}{a_n x^n}\) son terme de plus grand degré.</p>
+           <p>Soit \(\color{#2ecc71}{P(x)}\) un polynôme, \(\color{#2ecc71}{a_n x^n}\) son terme de <span class="highlight-green">plus grand degré</span>.</p>
             <ul>
                 <li><span class="highlight-green">\(\lim_{x \to a} P(x) = P(a)\)</span> pour tout \( \textcolor{red}{a \in \mathbb{R}} \)</li>
                 <li><span class="highlight-green">\(\lim_{x \to \pm\infty} P(x) = \lim_{x \to \pm\infty} a_n x^n\)</span></li>
@@ -729,7 +729,7 @@
         
         <div class="box definition-box">
             <span class="box-title">📘 Propriétés</span>
-            <p>Soit \(\textcolor{red}{Q(x)}\) un polynôme, \(\textcolor{red}{b_m x^m}\) son terme de plus grand degré.</p>
+            <p>Soit \(\textcolor{red}{Q(x)}\) un polynôme, \(\textcolor{red}{b_m x^m}\) son terme de <span class="red">plus grand degré</span>.</p>
             <div class="math-block">
                 \[
 \lim_{x \to \textcolor{blue}{\pm\infty}} \dfrac{\color{#2ecc71}{P(x)}}{\textcolor{red}{Q(x)}} 
@@ -780,7 +780,13 @@
         </div>
     </div>
 </div>
-
+<div class="box example-box">
+    <span class="box-title">💡 Calcul de \( \lim_{x \to \pm\infty} \left(\sqrt{a x + b } + m x + \beta\right) \)</span>
+    <p><strong>Si la limite donne \(+\infty - \infty\) :</strong></p>
+    <ul>
+        <li>utiliser la <span class="red">factorisation</span></li>
+    </ul>
+</div>
 <div class="box example-box">
     <span class="box-title">💡 Calcul de \( \lim_{x \to \pm\infty} \left(\sqrt{a x^2 + b x + c} + m x + \beta\right) \)</span>
     <p><strong>Si la limite donne \(+\infty - \infty\) :</strong></p>
@@ -793,7 +799,7 @@
         <h3 class="subsection-title">6.6 Limites avec Différence de Racines</h3>
         
         <div class="box example-box">
-            <span class="box-title">💡 Calcul de \(\lim_{x \to \pm\infty} \left(\sqrt{ax^2 + bx + c} - \sqrt{mx^2 + \beta x + \gamma}\right)\) <span class="highlight-purple">ou</span> \(\lim_{x \to \pm\infty} \left(\sqrt{ax + b} - \sqrt{mx+ \beta}\right)\)</span>
+            <span class="box-title">💡 Calcul de \(\lim_{x \to \pm\infty} \left(\sqrt{ax^2 + bx + c} - \sqrt{mx^2 + \beta x + \gamma}\right)\) <span class="highlight-purple">
             <p><strong>Si la limite donne \(+\infty - \infty\) :</strong></p>
             <ul>
                 <li>Si <span class="highlight-green">\(a \neq m\)</span> : utiliser la <span class="red">factorisation</span></li>
@@ -910,6 +916,7 @@
     </div>
 </body>
 </html>
+
 
 
 
