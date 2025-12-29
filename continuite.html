@@ -619,6 +619,45 @@
                 <li><span class="highlight-green">Une et une seule solution</span> : \(f\) <span class="highlight-green">continue</span> ET <span style="color:red;">strictement monotone</span></li>
             </ul>
         </div>
+
+         <div class="box definition-box">
+            <span class="box-title">Algorithme de dichotomie</span>
+            
+            <p><strong>Étape 1 :</strong> On calcule le milieu \(m = \dfrac{a + b}{2}\) et on évalue \(f(a) \cdot f(m)\).</p>
+            
+            <p style="margin-top: 15px;"><strong class="highlight-orange">Cas 1 :</strong> Si <span class="highlight-red">\(f(a) \cdot f(m) < 0\)</span> :</p>
+            <ul>
+                <li>Alors \(\alpha \in \left]a, \dfrac{a + b}{2}\right[\)</li>
+                <li>On pose \(b' = \dfrac{a + b}{2}\)</li>
+                <li>L'amplitude du nouvel encadrement est :  \(b'-a\) =\(\dfrac{b - a}{2}\)</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong class="highlight-orange">Cas 2 :</strong> Si <span class="highlight-red">\(f(b) \cdot f(m) < 0\)</span> :</p>
+            <ul>
+                <li>Alors \(\alpha \in \left]\dfrac{a + b}{2}, b\right[\)</li>
+                <li>On pose \(a' = \dfrac{a + b}{2}\)</li>
+                <li>L'amplitude du nouvel encadrement est : \(b-a'\) = \(\dfrac{b - a}{2}\)</li>
+            </ul>
+            
+            <p style="margin-top: 15px;"><strong>Étape 2 :</strong> On répète le processus jusqu'à ce que l'amplitude de l'encadrement soit inférieure à la précision souhaitée.</p>
+        </div>
+        
+        <div class="box example-box">
+            <span class="box-title">Exemple d'application</span>
+            <p>Soit \(f(x) = x^3 - 2\) sur \([1, 2]\).</p>
+            <ul>
+                <li>\(f(1) = -1 < 0\) et \(f(2) = 6 > 0\) donc <span class="highlight-red">\(f(1) \cdot f(2) < 0\)</span></li>
+                <li>\(f\) est continue et strictement croissante</li>
+                <li>Il existe une unique solution \(\alpha\) de \(f(x) = 0\) dans \(]1, 2[\)</li>
+            </ul>
+            <p style="margin-top: 10px;"><strong>Première itération :</strong></p>
+            <ul>
+                <li>\(m = \dfrac{1 + 2}{2} = 1.5\)</li>
+                <li>\(f(1.5) = (1.5)^3 - 2 = 1.375 > 0\)</li>
+                <li>\(f(1) \cdot f(1.5) < 0\) donc \(\alpha \in ]1, 1.5[\)</li>
+                <li>Nouvelle amplitude : \( 1.5-1 = 0.5\)</li>
+            </ul>
+        </div>
         
         <h2 class="section-title">9. Fonction Réciproque</h2>
         
@@ -782,6 +821,7 @@
     </div>
 </body>
 </html>
+
 
 
 
